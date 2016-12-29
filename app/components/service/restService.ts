@@ -24,6 +24,10 @@ export class RestService {
     this.header.append('Authorization', token);
 	this.authy = token;
   }
+  
+  jsonHeader(){
+    this.header.append('Content-Type', 'application/json');
+  }
 /*
 // Einen einzelnen Task holen
   getTask(task_id) {
@@ -91,14 +95,16 @@ export class RestService {
 	return this.http.get(url,options).map(res => res.json());
 
   }
-/*
-  // Neuen Task erstellen , wahrscheinlich überarbeiten
-  newTask(newTask){
-    var url = 'https://tinytaskrest.herokuapp.com/tasks/';
-    var response = this.http.post(url,newTask,null);
-    return response;
-  }
 
+  // Neuen Task erstellen , wahrscheinlich überarbeiten
+  newTask(newTask: any){
+    let url = 'https://tinytaskrest.herokuapp.com/tasks';
+	this.jsonHeader();
+	let options = new RequestOptions({ headers: this.header });
+	console.log(newTask);
+	return this.http.post(url,newTask,options).map((res: any) => res.json());
+  }
+/*
   //Task löschen
   deleteTask(task_id){
     var url = 'https://tinytaskrest.herokuapp.com/tasks/' + encodeURI(task_id);

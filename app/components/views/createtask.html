@@ -10,23 +10,24 @@
     </ul>
 	
 	<h2 class="center-me">Erzeuge deinen Task</h2>
-	
+
 	<div style="margin-top: 25px; margin-left:50px" >
-	Task: <input type="text" value="Deine Aufgabe!" width="100px">
+	Task: <input #name type="text" value="Deine Aufgabe!" width="100px">	{{taskname}}
 	<br><br>
-	Startzeit: <input type="text" value="Xx:Xx">
+	Startzeit: <input #time type="text" value="Xx:Xx">
 	<br><br>
-	Entlohnung: <input type="text" value="XX-€">
+	Entlohnung: <input #pay type="text" value="XX-€">
 	<br><br>
 	<br>
-	Abgabeplatz: <button  class="btn btn-info">Markieren</button>
+	Abgabeplatz: <button #place  class="btn btn-info">Markieren</button>
 	<br><br>
-	
+	Kategorie: <input #cat type="text" value="Deine Kategorie">
+	<br><br>
 	Beschreibung (optional):
 	<br>
-	<textarea rows="5" cols="100">Was ist deine TINYTASK?</textarea>
+	<textarea #descr rows="5" cols="100">Was ist deine TINYTASK?</textarea>
 	<div class="center-me" style="margin-top:25px">
-		<button class="btn btn-primary btn-xl" >TINY TASK ERZEUGEN</button>
+		<button class="btn btn-primary btn-xl" (click)="this.createTasks(name.value, time.value, pay.value, place.value, cat.value, descr.value)">TINY TASK ERZEUGEN</button>
 	</div>
 	</div>
 </div>

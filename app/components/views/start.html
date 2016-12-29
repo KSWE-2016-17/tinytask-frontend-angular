@@ -14,19 +14,19 @@
 	
     <p><i class="fa fa-spinner fa-2x" style="padding-top: 15px"></i> Aufgegebene Tasks</p>
 	
+	
+	
 	<table class="table" id="starter-" ng-controller="StartCtrl">
 	<th>#Nr</th><th><i class="fa fa-info-circle" ></i> Beschreibung</th><th><i class="fa fa-money"></i> Belohnung</th>
-     <!--    <tr ng-repeat="mytask in mytasks">
-            <td>{{mytask.id}}</td>
-            <td>{{mytask.name}}</td>
-            <td>{{mytask.money}}</td>
+		<tr *ngFor="let task of this.tasks">
+            <td>{{task._id}}</td>
+            <td>{{task.name}}</td>
+			<td>{{task.payment}}</td>
         </tr>
-		<tr ng-repeat="mytask in mytasks">
-            <td>{{mytask.id}}</td>
-            <td>{{mytask.name}}</td>
-            <td>{{mytask.money}}</td>
-        </tr> -->
+
     </table>
+	
+	
 	
 	<hr>
 
@@ -34,11 +34,11 @@
 
     <table class="table" ng-controller="StartCtrl">
 	<th>#Nr</th><th><i class="fa fa-info-circle" ></i> Beschreibung</th><th><i class="fa fa-money"></i> Belohnung</th>
-     <!--   <tr ng-repeat="mytask in mytasks">
-            <td>{{mytask.id}}</td>
-            <td>{{mytask.name}}</td>
-            <td>{{mytask.money}}</td> 
-        </tr> -->
+        <tr *ngFor="let task of this.my_tasks">
+            <td>{{task._id}}</td>
+            <td>{{task.name}}</td>
+			<td>{{task.payment}}</td>
+        </tr>
     </table>
 
 </div>
