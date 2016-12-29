@@ -101,7 +101,6 @@ export class RestService {
     let url = 'https://tinytaskrest.herokuapp.com/tasks';
 	this.jsonHeader();
 	let options = new RequestOptions({ headers: this.header });
-	console.log(newTask);
 	return this.http.post(url,newTask,options).map((res: any) => res.json());
   }
 /*

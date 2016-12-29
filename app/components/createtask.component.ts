@@ -18,8 +18,8 @@ export class CreateTaskComponent  {
 	
 	private createTasks(taskname:any, time:any, payment:any, place:any, category:any, description:any){
 		console.log(taskname,time,payment,place,category,description);
-		
-		let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment.trim(), "position": {"latitude":0, "longitude":0}, "starts":time.trim(), "category":category.trim()};
+		payment = parseInt(payment);
+		let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment, "position": {"latitude":0, "longitude":0}, "starts":time, "category":category.trim()};
 		
 		/*newtask.name = taskname;
 		newtask.description = description;
