@@ -24,11 +24,11 @@ export class CreateTaskComponent  {
 		/*let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment, "position": {"latitude":0, "longitude":0}, "starts":time, "category":category.trim()};*/
 		
 		this.locate();
-		let lat = localStorage.getItem("lat");
-		let lng = localStorage.getItem("lng");
+		let lat = parseFloat(localStorage.getItem("lat"));
+		let lng = parseFloat(localStorage.getItem("lng"));
 		
-		lat = parseFloat(lat);
-		lng = parseFloat(lng);
+		//lat = parseFloat(lat);
+		//lng = parseFloat(lng);
 		
 		let locatedPosition = {"latitude":lat, "longitude":lng};
 		
@@ -74,8 +74,8 @@ export class CreateTaskComponent  {
 			navigator.geolocation.getCurrentPosition(this.handlePosition,this.fail,{timeout: 10000});
 		}
 		else{
-			localStorage.setItem("lat",0);
-			localStorage.setItem("lng",0);
+			localStorage.setItem("lat","0");
+			localStorage.setItem("lng","0");
 		}
 	}
 	
