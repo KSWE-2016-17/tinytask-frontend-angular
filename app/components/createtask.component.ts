@@ -12,14 +12,27 @@ import {RestService} from "./service/restService";
   styleUrls: ['app/components/views/styles/login.css']
 })
 export class CreateTaskComponent  { 
+
 	constructor(private rest:RestService){
-		
 	}
+
+
 	
 	private createTasks(taskname:any, time:any, payment:any, place:any, category:any, description:any){
 		console.log(taskname,time,payment,place,category,description);
 		payment = parseInt(payment);
-		let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment, "position": {"latitude":0, "longitude":0}, "starts":time, "category":category.trim()};
+		/*let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment, "position": {"latitude":0, "longitude":0}, "starts":time, "category":category.trim()};*/
+		
+		this.locate();
+		let lat = localStorage.getItem("lat");
+		let lng = localStorage.getItem("lng");
+		
+		lat = parseFloat(lat);
+		lng = parseFloat(lng);
+		
+		let locatedPosition = {"latitude":lat, "longitude":lng};
+		
+		let newtask = {name: taskname.trim(), "description": description.trim(), "payment": payment, "position": locatedPosition, "starts":time, "category":category.trim()};
 		
 		/*newtask.name = taskname;
 		newtask.description = description;
@@ -48,6 +61,26 @@ export class CreateTaskComponent  {
 		this.rest.authorizationHeader(string);
 		this.rest.newTask(newtask)
 		.subscribe((data:any) =>{console.log("response");console.log(data);});
+	}
+	
+	private handlePosition(position:any){
+		console.log(position);
+		localStorage.setItem("lat",position.coords.latitude);
+		localStorage.setItem("lng",position.coords.longitude);
+	}
+	
+	private locate(){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(this.handlePosition,this.fail,{timeout: 10000});
+		}
+		else{
+			localStorage.setItem("lat",0);
+			localStorage.setItem("lng",0);
+		}
+	}
+	
+	private fail(){
+		
 	}
 	
  }

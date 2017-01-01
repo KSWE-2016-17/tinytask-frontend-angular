@@ -24,9 +24,9 @@
 		
 		<u>E-Mail aendern</u> <br>
 		
-		Neue E-Mail: <div  style="margin-left: 0px"><input type="text">
+		Neue E-Mail: <div  style="margin-left: 0px"><input #mail type="text">
 		<br>
-		<button type="button" class="btn btn-warning">E-Mail aendern</button>
+		<button type="button" class="btn btn-warning" (click)="this.createTasks(mail.value)">E-Mail aendern</button>
 		</div>
 		<br>
 		<hr>

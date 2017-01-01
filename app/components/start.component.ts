@@ -67,4 +67,7 @@ export class StartComponent  {
 		console.log(this.my_tasks);
 	}
 	
+	private openModal(){
+	}
+	
  }

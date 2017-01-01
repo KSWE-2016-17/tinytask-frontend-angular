@@ -75,4 +75,8 @@ export class ProfileComponent  {
 		}
 	}
 	
+	private changeMail(){
+		
+	}
+	
  }
